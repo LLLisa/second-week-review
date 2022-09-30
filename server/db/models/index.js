@@ -44,7 +44,6 @@ const dbSeed = async () => {
       gil.save(),
       grimey.save(),
     ]);
-    //how could we avoid the need to save()?
   } catch (error) {
     console.log(error);
   }
