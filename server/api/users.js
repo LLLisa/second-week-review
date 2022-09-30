@@ -1,9 +1,19 @@
-const { User } = require('../db');
+const { User, School } = require('../db');
 const router = require('express').Router();
 
+//localhost:3000/users/
 router.get('/', async (req, res, next) => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      include: [
+        {
+          model: School,
+        },
+      ],
+      where: {
+        schoolId: 2,
+      },
+    });
     res.send(users);
   } catch (error) {
     next(error);
@@ -13,7 +23,7 @@ router.get('/', async (req, res, next) => {
 //this route looks great, but what might go wrong with it?
 router.get('/:id', async (req, res, next) => {
   try {
-    const user = User.findByPk(req.params.id);
+    const user = await User.findByPk(req.params.id);
     res.send(user);
   } catch (error) {
     next(error);
@@ -45,7 +55,6 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    console.log(req.params.id);
     const user = await User.findByPk(req.params.id);
     await user.destroy();
     res.send(user);

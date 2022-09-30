@@ -20,6 +20,11 @@ router.get('/:id', async (req, res, next) => {
         id: req.params.id,
       },
     });
+    if (!school) {
+      const e = new Error('School not found');
+      e.status = 404;
+      throw e;
+    }
     res.send(school);
   } catch (error) {
     next(error);
