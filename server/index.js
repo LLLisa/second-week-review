@@ -3,6 +3,7 @@ const { conn, dbSeed } = require('./db');
 
 const syncAndSeed = async () => {
   try {
+    // what happens when eith of these fail?
     await conn.authenticate();
     await conn.sync({ force: true });
     dbSeed();

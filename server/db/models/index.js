@@ -1,7 +1,7 @@
 const conn = require('../conn');
 const User = require('./User');
 const School = require('./School');
-const { users, schools } = require('./seedData');
+const { users, schools } = require('../seedData');
 
 const dbSeed = async () => {
   try {
@@ -28,12 +28,23 @@ const dbSeed = async () => {
     gil.schoolId = springfieldCC.id;
     grimey.schoolId = springfieldCC.id;
 
+    //what is addClassmate?
     bart.addClassMate(nelson.id);
     bart.addClassMate(milhouse.id);
     bart.addClassMate(lisa.id);
 
     //Promise.all()?
-    await Promise.all([bart.save(), lisa.save(), marge.save()]);
+    await Promise.all([
+      bart.save(),
+      lisa.save(),
+      nelson.save(),
+      milhouse.save(),
+      marge.save(),
+      moe.save(),
+      gil.save(),
+      grimey.save(),
+    ]);
+    //how could we avoid the need to save()?
   } catch (error) {
     console.log(error);
   }

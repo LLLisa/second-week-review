@@ -12,7 +12,7 @@ const users = [
   { name: 'Nelson', age: 12, email: 'haha@gmail.com' },
   { name: 'Milhouse', age: 11, email: 'thrillhouse@gmail.com' },
   { name: 'Gil', age: 49, email: 'luckbealady@gmail.com' },
-  { name: 'Grimey', age: 1, email: 'FrankGrimes@gmail.com' },
+  { name: 'Grimey', age: 45, email: 'FrankGrimes@gmail.com' },
 ];
 
 const schools = [

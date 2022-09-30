@@ -6,4 +6,5 @@ School.hasMany(User);
 
 User.belongsToMany(User, { through: 'classmates', as: 'classMate' });
 
+//why is conn routed through here?
 module.exports = { conn, User, School, dbSeed };
